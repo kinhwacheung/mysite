@@ -49,7 +49,7 @@ def object_list(request,model):
 
 
 #provide views setting options
-def my_view(request,template_name):
+def my_view(request,template_name='templates/my_view.html'):
     var=do_something()
     return render_to_response(template_name,{'var':var})
 
