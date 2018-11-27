@@ -34,7 +34,10 @@ urlpatterns = [
     url(r'thanks/$',thanks),
     url(r'^events/$',mysite.books.views.object_list,{'model':mysite.books.models.Event}),
     url(r'^blog/entries/$',mysite.books.views.object_list,{'model':mysite.books.models.BlogEntry}),
-    url(r'^somepage/$',views.method_splitter,{'GET':mysites.books.views.some_page_get,'POST':mysite.books.views.some_page_post)
+    url(r'^somepage/$',views.method_splitter,{'GET':mysites.books.views.some_page_get,'POST':mysite.books.views.some_page_post),
+    url(r'^view1/$',requires_login(my_view1)),
+    url(r'^view2/$',requires_login(my_view2)),
+    url(r'^view3/$',requires_login(my_view3)),
 ]
 
 '''

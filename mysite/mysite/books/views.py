@@ -74,3 +74,25 @@ def some_page_post(request):
     da_something_for_post()
     return HttpResponseRedirect('/someurl')
 
+
+#包装视图函数
+def my_view1(request):
+    #
+    return render_to_response('template1.html')
+
+def my_view2(request):
+    #
+    return render_to_response('template2.html')
+
+def my_view3(request):
+    #
+    return render_to_response('template3.html')
+
+def requires_login(view):
+    def new_view(request,*args,**kwargs):
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect('/accounts/login')
+        return view(request,*args,**kwargs)
+    return new_view
+
+
