@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^view1/$',requires_login(my_view1)),
     url(r'^view2/$',requires_login(my_view2)),
     url(r'^view3/$',requires_login(my_view3)),
+    url(r'^blog/',include('inner'),{'blogid':3}),
 ]
 
 '''
