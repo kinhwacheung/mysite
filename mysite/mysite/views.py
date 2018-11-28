@@ -39,3 +39,24 @@ def current_url_view_good(request):
 def display_meta(request):
     values=request.META.items
     return render_to_response('display_meta.html',{'values':values})
+
+
+#RequestContext和Context处理器
+def custom_proc(request):
+    return {
+            'app':'My app',
+            'user':request.user,
+            'ip_address':request.META['REMOTE_ADDR']
+            }
+
+def view_1(request):
+    return renedr_to_response('template1.html',
+            {'message':'I am view 1.'},
+            context_instance=RequestContext(request,processors=[custom_proc]))
+
+def view_2(request):
+    return renedr_to_response('template2.html',
+            {'message':'I am view 2.'},
+            context_instance=RequestContext(request,processors=[custom_proc]))
+
+
